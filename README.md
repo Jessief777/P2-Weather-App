@@ -1,4 +1,4 @@
-# P2-Weather-App
+# Banckend API for P2-Weather-App
 
 _FOLDERS AND FILES DO NOT USE CHINESE_
 
@@ -26,21 +26,22 @@ MAC: COMMAND LINE: touch .gitignore
 - app (application)
 
   - config (if env changes it will change, eg: PORT, url)
-  - controller (req,res)
-  - middleware (http header, eg:auth)
-  - routes (backend-url)
+  - controller (handle request and response / req,res)
+  - middleware (filter request and response and return status code/ http header, eg:auth,login)
+  - routes (backend-url / entry point of application )
   - services (business-logic, third-party[API] )
   - validation (before enter controller it need to validate the result)
+  - model (connect to DB)
 
 - loaders (application init)
 
-  - index.js (entry file)
-  - express.js (framework)
+  - index.js (entry point for loaders / entry file)
+  - express.js (framework init)
   - mongoose.js (database)
 
 - .env (this will change when environment changes)
 
-- .gitignore (as it what files should git ignore)
+- .gitignore (as it what files should git ignore/file do not commit to git)
 
 - index.js(entry file/code start here)
 
@@ -48,6 +49,19 @@ MAC: COMMAND LINE: touch .gitignore
 
 - README.md (explain what the project is and how to run)
 
-### Flow
+---
 
-Root index.js -> loaders/index.js -> express.js -> app/routes/vi/api.js
+### Flow of app
+
+---
+
+Root index.js -> loaders/index.js -> express.js -> mongoose.js -> app/routes/vi/api.js
+
+//using loaders can be easier to change framwork in the future, other wise is too hard to change
+
+api
+routes -> middleware(not all api endpoint need) -> validation -> controller -> services -> model
+
+---
+
+(config can be used anywhere in the application)

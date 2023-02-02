@@ -5,6 +5,5 @@ const expressLoader = require("./express");
 exports.init = () => {
   expressLoader();
   // mongooseLoader();
-}
-// for root index.js init() function
-
+};
+// for root index.js init() function, can write like normal exports as well
